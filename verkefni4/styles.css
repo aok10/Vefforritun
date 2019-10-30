@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 28px;
+}
+
+body {
+  background-color: #333;
+  color: #ddd;
+  font-family: 'Merriweather', serif;
+}
+
+/*haus*/
+
+.header {
+  position: relative;
+  font-family: 'IM Fell DW Pica', serif;
+  color: #333;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('img/trees.jpg');
+  background-attachment: fixed;
+  padding: 20vh 1em 0 1em;
+}
+
+.protection {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.header *:not(.protection) {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+  margin: auto;
+}
+
+.header p {
+  line-height: 1em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 4vmin;
+}
+
+h1 {
+  font-size: 10vmin;
+}
+
+h2 {
+  font-size: 6vmin;
+  padding-top: 0.5em;
+  padding-bottom: 10vh;
+}
+
+/*meginmál*/
+
+main {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+blockquote {
+  font-style: italic;
+  text-align: right;
+  line-height: 2em;
+}
+
+cite {
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+p {
+  line-height: 2em;
+}
+
+main > *:not(hr):not(.postscript):not(:first-child) {
+  max-width: 50em;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+
+main > :first-child {
+  max-width: 50em;
+  margin: auto;
+  padding: 0 1em;
+}
+
+main p:not(.no-indent):not(.drop-cap) {
+  text-indent: 2em;
+}
+
+p.drop-cap::first-letter {
+  float: left;
+  font-size: 6.5rem;
+  padding-top: 0.5rem;
+  padding-right: 0.1em;
+  font-weight: bold;
+}
+
+hr {
+  border: 0;
+  height: 60vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+hr:nth-of-type(1) {
+  background-image: url('img/tree-fog.jpg');
+}
+
+hr:nth-of-type(2) {
+  background-image: url('img/castle.jpg');
+}
+
+hr:nth-of-type(3) {
+  background-image: url('img/hands.jpg');
+}
+
+hr:nth-of-type(4) {
+  background-image: url('img/moon.jpg');
+}
+
+.postscript > *:not(.header) {
+  max-width: 50em;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+
+.postscript h2 {
+  text-transform: uppercase;
+}
+
+.postscript :last-child {
+  margin-bottom: 0;
+}
+
+/*fótur*/
+
+footer {
+  color: #333;
+  background-color: #ddd;
+  padding: 1em 0;
+}
+
+footer > * {
+  max-width: 50em;
+  margin: auto;
+  padding:  0 1em;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
