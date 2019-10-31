@@ -47,7 +47,10 @@ function play() {
 	while (true) {
 		agiskanir++;
 		let guess = parseGuess(prompt('Veldu tölu á [0,100]'));
-		if (guess===null) break;
+		if (guess===null) {
+			alert("Hætt í leik");
+			break;
+		}
 		alert(getResponse(guess, random));
 		if (getResponse(guess, random)==='Rétt') {
 			games.push(agiskanir);
