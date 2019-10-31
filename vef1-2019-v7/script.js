@@ -13,7 +13,8 @@
  *  - Seinni leikur kláraðist í þrem ágiskunum.
  */
 
- const games = [];
+const games = [];
+let leikur = 0;
 
 
  /**
@@ -23,7 +24,7 @@
   * Ef notandi ýtir á "cancel" þá er sótt niðurstöður með getResults() og þær birtar með alert().
   */
 function start() {
-  play();
+	play();
 }
 
 /**
@@ -41,7 +42,24 @@ function start() {
  * Þarf aðútfæra með lykkju og flæðisstýringum
  */
 function play() {
-  const random = randomNumber(1,100;
+	const random = randomNumber(1,100);
+	let agiskanir = 0;
+	while (true) {
+		agiskanir++;
+		let guess = parseGuess(prompt('Veldu tölu á [0,100]'));
+		if (guess===null) break;
+		alert(getResponse(guess, random));
+		if (getResponse(guess, random)==='Rétt') {
+			games.push(agiskanir);
+			leikur++;
+			break;
+		}
+	}
+	if (confirm('Viltu spila annan leik?')) {
+		play();
+	} else {
+		getResults();
+	}
 }
 
 /**
@@ -53,8 +71,14 @@ function play() {
  * Ef enginn leikur var spilaður er skilað:
  *    "Þú spilaðir engann leik >_<"
  */
-function getResults(){
 
+function getResults(){
+	let x = calculateAverage();
+	if (leikur) { 
+		alert(`Þú spilaðir ${leikur} leiki\nMeðalfjöldi ágiskana var ${x}`);
+	} else {
+		alert('Þú spilaðir engann leik >_<');
+	}
 }
 
 /**
@@ -66,7 +90,11 @@ function getResults(){
  * þarf að útfæra með lykkju.
  */
 function calculateAverage(){
-
+	let sum =0; 
+	for (let i=0; i<games.length; i++) {
+		sum+=games[i];
+	}
+	return (sum/games.length).toFixed(2);
 }
 
 /**
@@ -74,7 +102,11 @@ function calculateAverage(){
  * Ef ekki er hægt að ná tölu úr input er skilað null
  */
 function parseGuess(input){
-
+	if (input) {
+		return input;
+	} else {
+		return null;
+	}
 }
 
 /**
@@ -93,14 +125,30 @@ function parseGuess(input){
  * Math.abs skilar algildi tölu: |a| = Math.abs(a)
  */
 function getResponse(guess, correct){
-  return 'Ekki rétt';
+	let mism = Math.abs(correct-guess);
+	if (guess<0||isNaN(guess)) {
+		return 'Ekki rétt';
+	}
+	if (mism===0) {
+		return 'Rétt';
+	} else if (mism<=5) {
+		return 'Mjög nálægt';
+	} else if (mism<=10) {
+		return 'Nálægt';
+	} else if (mism<=20) {
+		return 'Frekar langt frá';
+	} else if (mism<=50) {
+		return 'Langt frá';
+	} else {
+		return 'Mjög langt frá';
+	}
 }
 
 /**
  * Skilar tölu af handahófi á bilinu [min, max]
  */
 function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 // Byrjar leik
