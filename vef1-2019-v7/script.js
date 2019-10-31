@@ -131,13 +131,13 @@ function getResponse(guess, correct){
 	}
 	if (mism===0) {
 		return 'Rétt';
-	} else if (mism<=5) {
+	} else if (mism<5) {
 		return 'Mjög nálægt';
-	} else if (mism<=10) {
+	} else if (mism<10) {
 		return 'Nálægt';
-	} else if (mism<=20) {
+	} else if (mism<20) {
 		return 'Frekar langt frá';
-	} else if (mism<=50) {
+	} else if (mism<50) {
 		return 'Langt frá';
 	} else {
 		return 'Mjög langt frá';
